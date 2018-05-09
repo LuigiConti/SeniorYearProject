@@ -6,7 +6,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import javax.swing.JFrame;
-//Lets hope this works pls
+
 public class Main extends JFrame implements Runnable{
 	//Window and Canvas
 	private boolean isRunning;
