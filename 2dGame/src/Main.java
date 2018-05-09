@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.JFrame;
 
 public class Main extends JFrame implements Runnable{
-	// hi
+	//
 	//Window and Canvas
 	private boolean isRunning;
 	public long fps = 60;
