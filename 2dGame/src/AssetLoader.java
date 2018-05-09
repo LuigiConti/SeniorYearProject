@@ -1,5 +1,5 @@
 import java.awt.image.BufferedImage;
-//testing
+
 public class AssetLoader {
 	public static final int width = 32, height = 32;
 	
