@@ -1,4 +1,5 @@
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 public class MenuState extends State {
 	int y;
@@ -18,7 +19,7 @@ public class MenuState extends State {
 	}
 
 	@Override
-	public void render(Graphics g) {
+	public void render(Graphics2D g) {
 		g.drawImage(AssetLoader.menuArt, 0, 0, handler.getWidth(), handler.getHeight(), null);
 		buttonStart.render(g);
 		buttonHelp.render(g);

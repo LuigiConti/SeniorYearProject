@@ -1,5 +1,3 @@
-import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.Point;
 
 public abstract class Building extends Entity {
@@ -35,8 +33,14 @@ public abstract class Building extends Entity {
 		
 		
 		else if(this.state == "buildingUnit") {
-			handler.getEntityManager().addEntity(new Wizard(handler, this.x + this.width + 20, this.y + this.height/2));
-			this.state = "finishedBuilding";
+			if(Main.energy >= 1000) {
+				Main.energy -= 1000;
+				handler.getEntityManager().addEntity(new Wizard(handler, this.x + this.width + 20, this.y + this.height/2));
+				this.state = "finishedBuilding";
+			}else{
+				this.state = "waitingForOrders";
+				System.out.println("Not enough energy!");
+			}
 		}
 		
 		
@@ -107,10 +111,13 @@ public abstract class Building extends Entity {
 	
 	public void harvestBasedOnResource(Tile tile) {
 		if(tile.texture == AssetLoader.grass) {
+			Main.energy += 1;
 			System.out.println("Grass");
 		} else if(tile.texture == AssetLoader.forest) {
+			Main.energy += 5;
 			System.out.println("Forest");
 		} else if(tile.texture == AssetLoader.mushroom) {
+			Main.energy += 10;
 			System.out.println("Mushroom");
 		}
 	}

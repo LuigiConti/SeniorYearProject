@@ -33,6 +33,8 @@ public class Main extends JFrame implements Runnable{
 	//Handler
 	private Handler handler;
 	
+	public static int energy = 0;
+	
 
 	public static void main(String[] args){
 		Main game = new Main(); 

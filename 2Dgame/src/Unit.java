@@ -129,6 +129,7 @@ public abstract class Unit extends Entity {
 			
 		}else if(this.state == "reachedWaypoint") {
 			System.out.println("REACHED WAYPOINT!!!!");
+			this.selected = false;
 			this.state = "waitingForOrders";
 			
 		}

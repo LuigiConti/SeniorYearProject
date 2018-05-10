@@ -1,4 +1,6 @@
+import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 public class GameState extends State {
 	
@@ -18,8 +20,12 @@ public class GameState extends State {
 	}
 
 	@Override
-	public void render(Graphics g) {
+	public void render(Graphics2D g) {
 		map.render(g);
+		 g.setColor(Color.cyan);
+		 g.scale(2, 2);
+		 g.drawString("Energy: "+Main.energy, 10, 20);
+		 g.scale(1, 1);
 		
 	}
 
