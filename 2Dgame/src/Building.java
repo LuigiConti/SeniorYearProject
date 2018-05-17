@@ -7,7 +7,6 @@ public abstract class Building extends Entity {
 	public static final int DEFAULT_BUILDING_WIDTH = 96,
 							DEFAULT_BUILDING_HEIGHT = 96;
 	
-	public int health;
 	public float speed;
 	
 	public BuildMenu buildMenu;
@@ -16,7 +15,7 @@ public abstract class Building extends Entity {
 	
 	public Building(Handler handler, int x, int y, int width, int height) {
 		super(handler, x, y, width, height);
-		health = DEFAULT_HEALTH;
+		maxHealth = DEFAULT_HEALTH;
 		speed = DEFAULT_SPEED;
 		
 		originTile = new Point();
@@ -123,14 +122,6 @@ public abstract class Building extends Entity {
 	}
 	
 	//Getters and Setters
-	public int getHealth() {
-		return health;
-	}
-
-	public void setHealth(int health) {
-		this.health = health;
-	}
-
 	public float getSpeed() {
 		return speed;
 	}

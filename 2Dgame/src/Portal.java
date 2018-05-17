@@ -10,7 +10,8 @@ public class Portal extends Building{
 
 	public Portal(Handler handler, int x, int y) {
 		super(handler, x, y, Building.DEFAULT_BUILDING_WIDTH, Building.DEFAULT_BUILDING_HEIGHT);
-		health = 200;
+		maxHealth = 200;
+		currentHealth = maxHealth;
 		highlighted = false;
 		selected = false;
 		state = "waitingForOrders";
@@ -31,6 +32,8 @@ public class Portal extends Building{
 		highlight();
 		if(selected) {buildMenu.update();}
 		runBehavior();
+		
+		
 		//System.out.println(originTile.x /Tile.TILE_WIDTH+ "" + originTile.y/Tile.TILE_HEIGHT);
 		
 	}
@@ -39,6 +42,7 @@ public class Portal extends Building{
 	public void render(Graphics g) {
 		g.drawImage(AssetLoader.portal, (int)(x - handler.getCamera().getxOffset()), (int)(y - handler.getCamera().getyOffset()), width, height, null);
 		this.drawBounds(g);
+		this.drawHealthBar(g);
 		g.fillRect(originTile.x - (int)handler.getCamera().getxOffset(), originTile.y - (int)handler.getCamera().getyOffset(), 10, 10);
 		
 		if(selected) {

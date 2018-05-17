@@ -9,8 +9,13 @@ public abstract class Entity {
 	protected int width, height;
 	public boolean highlighted, selected;
 	public Rectangle bounds;
+	public Rectangle healthBar;
+	private int widthMax;
 	public String state;
 	protected Handler handler;
+	
+	public int maxHealth;
+	public int currentHealth;
 	
 	public Entity(Handler handler, int x, int y, int width, int height){
 		
@@ -26,6 +31,14 @@ public abstract class Entity {
 		bounds.y = (int) (y - 1);
 		bounds.width = this.width + 1;
 		bounds.height = this.height + 1;
+		
+		healthBar = new Rectangle();
+		healthBar.x = this.x;
+		healthBar.y = this.y + this.height + 5;
+		healthBar.height = 5;
+		healthBar.width = this.width;
+		widthMax = healthBar.width;
+		
 	}
 	
 	public void highlight() {
@@ -51,6 +64,15 @@ public abstract class Entity {
 			g.setColor(Color.blue);
 			g.drawRect((int)(bounds.x - handler.getCamera().getxOffset()), (int)(bounds.y - handler.getCamera().getyOffset()), bounds.width, bounds.height);
 		}
+	}
+	
+	public void drawHealthBar(Graphics g) {
+		healthBar.setLocation(this.x, this.y + this.height + 5);
+		healthBar.width = (int) (widthMax * ((double)currentHealth/maxHealth) );
+		
+		g.setColor(Color.red);
+		g.fillRect((int)(healthBar.x- handler.getCamera().getxOffset()), (int)(healthBar.y- handler.getCamera().getyOffset()), healthBar.width, healthBar.height);
+		
 	}
 	
 	public abstract void setBehavior(MouseEvent arg0);

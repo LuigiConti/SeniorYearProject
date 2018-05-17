@@ -7,18 +7,19 @@ public abstract class Unit extends Entity {
 	public static final int DEFAULT_UNIT_WIDTH = 48,
 							DEFAULT_UNIT_HEIGHT = 48;
 	
-	protected int health;
 	protected int speed;
 	
 	public Point waypoint;
 	
 	public Unit(Handler handler, int x, int y, int width, int height) {
 		super(handler, x, y, width, height);
-		health = DEFAULT_HEALTH;
 		speed = DEFAULT_SPEED;
 		this.state = "waitingForOrders";
 		waypoint = new Point();
 		waypoint.setLocation(x,y);
+		
+		maxHealth = DEFAULT_HEALTH;
+		currentHealth = maxHealth;
 		
 	}
 	
@@ -142,14 +143,6 @@ public abstract class Unit extends Entity {
 	}
 	
 	//Getters and Setters
-	public int getHealth() {
-		return health;
-	}
-
-	public void setHealth(int health) {
-		this.health = health;
-	}
-
 	public float getSpeed() {
 		return speed;
 	}

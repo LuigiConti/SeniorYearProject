@@ -6,7 +6,8 @@ public class Wizard extends Unit{
 	
 	public Wizard(Handler handler, int x, int y) {
 		super(handler, x, y, Unit.DEFAULT_UNIT_WIDTH, Unit.DEFAULT_UNIT_HEIGHT);
-		health = 20;
+		maxHealth = 500;
+		currentHealth = maxHealth;
 		speed = 2;
 		highlighted = false;
 		selected = false;
@@ -18,6 +19,14 @@ public class Wizard extends Unit{
 		highlight();
 		runBehavior();
 		
+		
+		if(currentHealth>0) {
+			currentHealth -= 1;
+			
+		}else {
+			currentHealth = maxHealth;
+		}
+		
 	}
 	
 	
@@ -25,7 +34,8 @@ public class Wizard extends Unit{
 	@Override
 	public void render(Graphics g) {
 		g.drawImage(AssetLoader.wizard, (int)(x - handler.getCamera().getxOffset()), (int)(y - handler.getCamera().getyOffset()), width, height, null);
-		this.drawBounds(g);
+		drawBounds(g);
+		drawHealthBar(g);
 		
 	}
 
