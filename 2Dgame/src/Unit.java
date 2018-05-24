@@ -97,7 +97,7 @@ public abstract class Unit extends Entity {
 				}else if(time == 0 && this.y != distance.y && distance.y < 0) {
 					this.y = this.y - (waypoint.y - this.y);
 				}
-				/*
+				/*/ / Entity collision
 				for(Entity e : handler.getEntityManager().entities) {
 					if(this == e) {
 						return;
